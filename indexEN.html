@@ -1,0 +1,578 @@
+<p>&nbsp;</p>
+<link href="https://fonts.googleapis.com" rel="preconnect" /><link href="https://fonts.gstatic.com" rel="preconnect" /><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:wght@700;900&amp;display=swap" rel="stylesheet" />
+<style>
+    :root {
+      --color-sunset: #f56a00;
+      --color-tide: #0f2a38;
+      --color-willow: #e2e71b;
+      --color-sunset-light: #ff8533;
+      --color-sunset-dark: #d95800;
+      --color-tide-light: #1a4158;
+      --color-tide-dark: #0a1a24;
+      --color-willow-light: #ebef4d;
+      --color-willow-muted: #c9cd19;
+      --color-white: #ffffff;
+      --color-off-white: #f8f9fa;
+      --color-light-gray: #e9ecef;
+      --color-mid-gray: #6c757d;
+      --color-charcoal: #2d2d2d;
+      --font-display: "Playfair Display", serif;
+      --font-body: "DM Sans", sans-serif;
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 2rem;
+      --space-lg: 4rem;
+      --space-xl: 6rem;
+      --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+      --ease-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: var(--font-body);
+      color: var(--color-charcoal);
+      background-color: var(--color-off-white);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    .hero {
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-lg) var(--space-md);
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--color-tide-dark) 0%, var(--color-tide) 100%);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 80% 20%, rgba(226, 231, 27, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 20% 80%, rgba(245, 106, 0, 0.08) 0%, transparent 50%);
+      opacity: 0.55;
+    }
+    .hero-content {
+      max-width: 1100px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(226, 231, 27, 0.2);
+      color: var(--color-willow);
+      padding: 0.5rem 1.25rem;
+      border-radius: 50px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-md);
+      border: 1px solid rgba(226, 231, 27, 0.3);
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 7vw, 4.5rem);
+      font-weight: 900;
+      color: var(--color-white);
+      line-height: 1.1;
+      margin-bottom: var(--space-md);
+      letter-spacing: -0.02em;
+    }
+    .hero h1 .highlight {
+      color: var(--color-willow);
+      position: relative;
+      display: inline-block;
+    }
+    .hero-subtitle {
+      font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+      color: rgba(255, 255, 255, 0.9);
+      max-width: 700px;
+      margin-bottom: var(--space-lg);
+      line-height: 1.6;
+    }
+    .hero-stats {
+      display: flex;
+      gap: var(--space-lg);
+      flex-wrap: wrap;
+    }
+    .stat-item {
+      text-align: center;
+    }
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 900;
+      color: var(--color-sunset);
+      line-height: 1;
+      margin-bottom: var(--space-xs);
+    }
+    .stat-label {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+    section {
+      padding: var(--space-xl) 0;
+      position: relative;
+    }
+    .section-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto var(--space-lg);
+    }
+    .section-label {
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--color-sunset);
+      font-weight: 600;
+      margin-bottom: var(--space-sm);
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      color: var(--color-tide);
+      margin-bottom: var(--space-md);
+      letter-spacing: -0.01em;
+    }
+    .section-description {
+      font-size: 1.125rem;
+      color: var(--color-mid-gray);
+      line-height: 1.7;
+    }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-md);
+      margin-top: var(--space-lg);
+    }
+    .benefit-card {
+      background: var(--color-white);
+      padding: var(--space-lg);
+      border-radius: 8px;
+      transition: all 0.4s var(--ease-smooth);
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    .benefit-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--color-sunset) 0%, var(--color-willow) 100%);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s var(--ease-smooth);
+    }
+    .benefit-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 60px rgba(15, 42, 56, 0.12);
+      border-color: var(--color-light-gray);
+    }
+    .benefit-card:hover::before {
+      transform: scaleX(1);
+    }
+    .benefit-icon {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, rgba(245, 106, 0, 0.1) 0%, rgba(226, 231, 27, 0.1) 100%);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      margin-bottom: var(--space-md);
+    }
+    .benefit-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      color: var(--color-tide);
+      margin-bottom: var(--space-sm);
+    }
+    .benefit-card p {
+      color: var(--color-charcoal);
+      line-height: 1.7;
+    }
+    .who-section {
+      background: var(--color-white);
+    }
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-md);
+      margin-top: var(--space-lg);
+    }
+    .who-card {
+      text-align: center;
+      padding: var(--space-lg) var(--space-md);
+      background: var(--color-off-white);
+      border-radius: 8px;
+      transition: all 0.3s var(--ease-smooth);
+      cursor: default;
+    }
+    .who-card:hover {
+      background: var(--color-white);
+      box-shadow: 0 8px 30px rgba(15, 42, 56, 0.08);
+    }
+    .who-card .icon {
+      font-size: 2.5rem;
+      margin-bottom: var(--space-md);
+      filter: grayscale(0.2);
+    }
+    .who-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      color: var(--color-tide);
+      margin-bottom: var(--space-xs);
+    }
+    .who-card p {
+      font-size: 0.9rem;
+      color: var(--color-mid-gray);
+    }
+    .how-section {
+      background: linear-gradient(180deg, var(--color-off-white) 0%, var(--color-light-gray) 100%);
+    }
+    .steps-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-lg);
+      margin-top: var(--space-lg);
+      position: relative;
+    }
+    .step {
+      position: relative;
+      text-align: center;
+    }
+    .step-number {
+      width: 60px;
+      height: 60px;
+      background: var(--color-sunset);
+      color: var(--color-white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0 auto var(--space-md);
+      box-shadow: 0 4px 20px rgba(245, 106, 0, 0.3);
+    }
+    .step h3 {
+      font-family: var(--font-display);
+      font-size: 1.375rem;
+      color: var(--color-tide);
+      margin-bottom: var(--space-sm);
+    }
+    .step p {
+      color: var(--color-charcoal);
+      line-height: 1.7;
+    }
+    .cta-section {
+      background: var(--color-tide);
+      color: var(--color-white);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 30% 50%, rgba(226, 231, 27, 0.08) 0%, transparent 60%),
+        radial-gradient(circle at 70% 50%, rgba(245, 106, 0, 0.06) 0%, transparent 60%);
+    }
+    .cta-content {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .cta-content h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      margin-bottom: var(--space-md);
+      line-height: 1.2;
+    }
+    .cta-content p {
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: var(--space-lg);
+      line-height: 1.7;
+    }
+    .cta-button {
+      display: inline-block;
+      background: var(--color-willow);
+      color: var(--color-tide);
+      padding: 1.125rem 3rem;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s var(--ease-smooth);
+      box-shadow: 0 8px 30px rgba(226, 231, 27, 0.3);
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .cta-button:hover {
+      background: var(--color-willow-light);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(226, 231, 27, 0.4);
+    }
+    .cta-button:active {
+      transform: translateY(-2px);
+    }
+    .value-section {
+      background: var(--color-white);
+    }
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-lg);
+      margin-top: var(--space-lg);
+    }
+    .value-item {
+      display: flex;
+      gap: var(--space-md);
+      padding: var(--space-md);
+      background: var(--color-off-white);
+      border-radius: 8px;
+      transition: transform 0.3s var(--ease-smooth);
+    }
+    .value-item:hover {
+      transform: translateX(8px);
+    }
+    .value-icon {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, var(--color-sunset) 0%, var(--color-sunset-light) 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-white);
+      font-size: 1.25rem;
+    }
+    .value-content h4 {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      color: var(--color-tide);
+      margin-bottom: 0.25rem;
+    }
+    .value-content p {
+      font-size: 0.9rem;
+      color: var(--color-mid-gray);
+      line-height: 1.6;
+    }
+    @media (max-width: 768px) {
+      .hero-stats {
+        justify-content: center;
+      }
+      .value-grid {
+        grid-template-columns: 1fr;
+      }
+      .steps-container {
+        gap: var(--space-md);
+      }
+    }
+    /* Visible on first paint — no JS, no staggered animations */
+    .reveal {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+<div class="hero">
+<div class="hero-content">
+<div class="hero-badge">Partner Program</div>
+<h1>Grow Your Revenue,<br />Delight Your <span class="highlight">Customers</span></h1>
+<p class="hero-subtitle">Join Outzip's affiliate program and earn 10% commission while providing your customers with premium outdoor gear rentals. No inventory, no risk&mdash;just value.</p>
+<div class="hero-stats">
+<div class="stat-item">
+<div class="stat-number">10%</div>
+<div class="stat-label">Commission</div>
+</div>
+<div class="stat-item">
+<div class="stat-number">&infin;</div>
+<div class="stat-label">Earning Potential</div>
+</div>
+<div class="stat-item">
+<div class="stat-number">0&euro;</div>
+<div class="stat-label">Upfront Cost</div>
+</div>
+</div>
+</div>
+</div>
+<section>
+<div class="container">
+<div class="section-header reveal">
+<div class="section-label">Why Partner With Us</div>
+<h2 class="section-title">Turn Recommendations Into Revenue</h2>
+<p class="section-description">Strengthen customer relationships while building a new income stream. We handle the gear, you provide the value.</p>
+</div>
+<div class="benefits-grid">
+<div class="benefit-card reveal">
+<div class="benefit-icon">💰</div>
+<h3>Earn 10% Commission</h3>
+<p>Generate passive income on every rental booked through your referral. Your customers already need gear&mdash;now you can benefit from connecting them.</p>
+</div>
+<div class="benefit-card reveal">
+<div class="benefit-icon">🎯</div>
+<h3>Increase Customer Loyalty</h3>
+<p>Provide a complete service by offering quality gear alongside your experiences. Customers remember who made their adventure possible.</p>
+</div>
+<div class="benefit-card reveal">
+<div class="benefit-icon">🔄</div>
+<h3>Zero Inventory Risk</h3>
+<p>No storage, maintenance, or upfront investment required. Focus on what you do best while we handle the equipment logistics.</p>
+</div>
+<div class="benefit-card reveal">
+<div class="benefit-icon">📊</div>
+<h3>Customer Insights</h3>
+<p>Learn what gear your customers need most. We share data that helps you understand and serve your audience better.</p>
+</div>
+<div class="benefit-card reveal">
+<div class="benefit-icon">🌿</div>
+<h3>Sustainability Matters</h3>
+<p>Support the circular economy while meeting customer needs. Show your commitment to responsible outdoor practices.</p>
+</div>
+<div class="benefit-card reveal">
+<div class="benefit-icon">🤝</div>
+<h3>Partnership Support</h3>
+<p>We're invested in your success. Get dedicated support, marketing materials, and insights to maximize your affiliate performance.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="who-section">
+<div class="container">
+<div class="section-header reveal">
+<div class="section-label">Perfect For</div>
+<h2 class="section-title">Who Should Join?</h2>
+<p class="section-description">This program is designed for businesses and professionals who connect customers with outdoor experiences.</p>
+</div>
+<div class="who-grid">
+<div class="who-card reveal">
+<div class="icon">🗺️</div>
+<h3>Tour Operators</h3>
+<p>Enhance your tours with quality gear options</p>
+</div>
+<div class="who-card reveal">
+<div class="icon">🏢</div>
+<h3>Travel Agencies</h3>
+<p>Complete your travel packages with equipment rentals</p>
+</div>
+<div class="who-card reveal">
+<div class="icon">🏔️</div>
+<h3>Tourism Offices</h3>
+<p>Support visitors with essential outdoor gear access</p>
+</div>
+<div class="who-card reveal">
+<div class="icon">🧭</div>
+<h3>Guides &amp; Instructors</h3>
+<p>Equip your clients professionally and earn commission</p>
+</div>
+<div class="who-card reveal">
+<div class="icon">🎪</div>
+<h3>Experience Providers</h3>
+<p>Add value to your activities with gear solutions</p>
+</div>
+<div class="who-card reveal">
+<div class="icon">📍</div>
+<h3>Destination Marketers</h3>
+<p>Make outdoor adventures more accessible</p>
+</div>
+</div>
+</div>
+</section>
+<section class="how-section">
+<div class="container">
+<div class="section-header reveal">
+<div class="section-label">Simple Process</div>
+<h2 class="section-title">How It Works</h2>
+<p class="section-description">Start earning in three straightforward steps. No complicated setup, no hidden requirements.</p>
+</div>
+<div class="steps-container">
+<div class="step">
+<div class="step-number">1</div>
+<h3>Join the Program</h3>
+<p>Fill out our quick application form. We'll review and get you set up with everything you need to start referring customers.</p>
+</div>
+<div class="step">
+<div class="step-number">2</div>
+<h3>Refer Customers</h3>
+<p>Share your unique affiliate link with clients who need outdoor gear. Integrate it into your booking flow, website, or recommendations.</p>
+</div>
+<div class="step">
+<div class="step-number">3</div>
+<h3>Earn Commission</h3>
+<p>Receive 10% commission on every rental. Track performance, understand customer preferences, and watch your revenue grow.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="value-section">
+<div class="container">
+<div class="section-header reveal">
+<div class="section-label">The Outzip Advantage</div>
+<h2 class="section-title">Why Your Customers Will Love It</h2>
+<p class="section-description">We make it easy for you to recommend us with confidence.</p>
+</div>
+<div class="value-grid">
+<div class="value-item reveal">
+<div class="value-icon">✓</div>
+<div class="value-content">
+<h4>Premium Quality Equipment</h4>
+<p>Top outdoor brands, professionally maintained and regularly updated inventory.</p>
+</div>
+</div>
+<div class="value-item reveal">
+<div class="value-icon">✓</div>
+<div class="value-content">
+<h4>Flexible Rental Periods</h4>
+<p>From weekend adventures to month-long expeditions, we accommodate all timelines.</p>
+</div>
+</div>
+<div class="value-item reveal">
+<div class="value-icon">✓</div>
+<div class="value-content">
+<h4>Seamless Booking Experience</h4>
+<p>Easy online reservation system with transparent pricing and instant confirmation.</p>
+</div>
+</div>
+<div class="value-item reveal">
+<div class="value-icon">✓</div>
+<div class="value-content">
+<h4>Reliable Customer Service</h4>
+<p>Dedicated support team ensuring your customers have a smooth rental experience.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="cta-section">
+<div class="container">
+<div class="cta-content">
+<h2>Let's Create Value Together</h2>
+<p>Join a growing network of partners who are enhancing their services, delighting customers, and generating sustainable revenue. The circular economy starts with collaboration.</p>
+<a class="cta-button" href="https://2dgefg.share-eu1.hsforms.com/2pQbAe8vPQLuUSvdVtXb21w" target="_blank" rel="noopener noreferrer">Become a Partner</a></div>
+</div>
+</section>
